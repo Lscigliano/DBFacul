@@ -5,8 +5,8 @@ CREATE TABLE ALUNO(                              /* criando  tabela ALUNO */
 	NOME VARCHAR(30) NOT NULL,                    
 	SEXO ENUM('M','F') NOT NULL,                  /* ENUM adicionado para informar uma lista de opções, OU Masculino ou feminino */
 	EMAIL VARCHAR(50) UNIQUE,
-	CPF VARCHAR(15) UNIQUE                       /* Apesar do CPF ter 11 caracteres, foi adicionado 15 caracteres como VARCHAR. o correto seria 11
-);							vou mudar para tunnar melhor o banco, na verdade fiz isso propositalmente... */
+	CPF VARCHAR(15) UNIQUE                       /* Apesar do CPF ter 11 caracteres, foi adicionado 15 caracteres como VARCHAR. o correto seria CHAR 11
+);							fiz isso para mostrar que tem como fazer um tunning no banco */
 
 CREATE TABLE ENDERECO(
 	IDENDALUNO INT PRIMARY KEY AUTO_INCREMENT, 
