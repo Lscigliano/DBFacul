@@ -1,12 +1,12 @@
 CREATE DATABASE universidade-bd;
 
-CREATE TABLE ALUNO(
-	IDALUNO INT PRIMARY KEY AUTO_INCREMENT,
-	NOME VARCHAR(30) NOT NULL,
-	SEXO ENUM('M','F') NOT NULL,
+CREATE TABLE ALUNO(                              /* criando  tabela ALUNO */ 
+	IDALUNO INT PRIMARY KEY AUTO_INCREMENT,       /* Definindo uma chave primária como auto incrementação */
+	NOME VARCHAR(30) NOT NULL,                    
+	SEXO ENUM('M','F') NOT NULL,                  /* ENUM adicionado para informar uma lista de opções, OU Masculino ou feminino */
 	EMAIL VARCHAR(50) UNIQUE,
-	CPF VARCHAR(15) UNIQUE
-);
+	CPF VARCHAR(15) UNIQUE                       /* Apesar do CPF ter 11 caracteres, foi adicionado 15 caracteres como VARCHAR. o correto seria 11
+);							vou mudar para tunnar melhor o banco, na verdade fiz isso propositalmente... */
 
 CREATE TABLE ENDERECO(
 	IDENDALUNO INT PRIMARY KEY AUTO_INCREMENT, 
@@ -16,7 +16,7 @@ CREATE TABLE ENDERECO(
 	ESTADO CHAR(2) NOT NULL,
 	ID_ALUNO INT UNIQUE
 
-	FOREIGN KEY(ID_ALUNO)
+	FOREIGN KEY(ID_ALUNO)                   /* Fazendo a ligação da chave primaria com a chave estrangeira  */
 	REFERENCES CLIENTE(IDALUNO)
 );
 
@@ -54,8 +54,8 @@ CREATE TABLE MATRICULA (
 
 
 
-INSERT INTO ALUNO VALUES(NULL,'LEONARDO SCIGLIANO','M','SCIGLIANO_6@HOTMAIL.COM','76567587887');
-INSERT INTO ALUNO VALUES(NULL,'LARISSA FAGUNDES','F','LARI@GMAIL.COM','78748984');
+INSERT INTO ALUNO VALUES(NULL,'LEONARDO SCIGLIANO','M','SCIGLIANO_6@HOTMAIL.COM','76567587887');        /* Inserindo informações(valores) dentro da tabela ALUNO */
+INSERT INTO ALUNO VALUES(NULL,'LARISSA FAGUNDES','F','LARI@GMAIL.COM','78748984');			 
 INSERT INTO ALUNO VALUES(NULL,'ROBERTA@HOTMAIL.COM','F','ROBER@GMAIL.COM','78489184');
 INSERT INTO ALUNO VALUES(NULL,'CARLOS24@GMAIL.COM','M','CARLOS@GMAIL.COM','41012014');
 
@@ -82,8 +82,8 @@ INSERT INTO MATRICULA VALUES (NULL,'Em Dia','1','4');
 
 
 
-SELECT  AL.*, 
-	END.*, 
+SELECT  AL.*,                       /* O Gestor pediu para trazer todos os dados do aluno Leonardo, o ID dele é o 1, então projetamos e juntamos 
+	END.*, 				todas as informações nas tabelas desejadas */
 	TEL.*, 
 	C.* , 
 	MAT.*
