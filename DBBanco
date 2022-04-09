@@ -131,13 +131,13 @@ where IDALUNO = 1;
 
 CREATE VIEW RE_ALUNO AS      /* Criando VIEWS do select para facilitar o processo de projeção de informações */
 SELECT  AL.*,                       
-	END.*, 				
+	ED.*, 				
 	TEL.*, 
 	C.* , 
 	MAT.*
 FROM ALUNO AL
-JOIN ENDERECO END
-ON AL.IDALUNO = END.ID_ALUNO
+JOIN ENDERECO ED
+ON AL.IDALUNO = ED.ID_ALUNO
 JOIN TELEFONE TEL
 ON AL.IDALUNO = TEL.ID_ALUNO
 JOIN CURSO C
