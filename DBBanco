@@ -82,6 +82,35 @@ INSERT INTO MATRICULA VALUES (NULL,'Em Dia','1','4');
 
 
 
+/* Fazendo UPDATE de um aluno que se mudou, Foi informado que o aluno em questão se  chamava LEONARDO SCIGLIANO */
+
+SELECT AL.NOME,             /* É FEITO UM SELECT PARA TER CERTEZA EM QUAL REGISTRO SERÁ FEITO O UPDATE */
+	ED.RUA,
+    ED.BAIRRO
+FROM ALUNO AL
+JOIN ENDERECO ED
+ON AL.IDALUNO = ED.ID_ALUNO
+
+
+UPDATE ENDERECO SET
+RUA = 'Lucas Araujo',
+BAIRRO = 'Centro'
+WHERE ID_ALUNO = 1         /* NESSE CASO O IDALUNO É 1, ENTÃO FICA FACIL FAZER ALTERAÇÕES SEM ERROS */
+ 
+ /* É FEITO OUTRO SELECT PARA TER CERTEZA QUE FOI FEITO CORRETAMENTE O UPDATE */
+ 
+SELECT AL.NOME,
+	ED.RUA,
+    ED.BAIRRO
+FROM ALUNO AL
+JOIN ENDERECO ED
+ON AL.IDALUNO = ED.ID_ALUNO
+
+
+
+
+
+
 SELECT  AL.*,                       /* O Gestor pediu para trazer todos os dados do aluno Leonardo, o ID dele é o 1, então projetamos e juntamos 
 	END.*, 				todas as informações nas tabelas desejadas */
 	TEL.*, 
@@ -89,13 +118,13 @@ SELECT  AL.*,                       /* O Gestor pediu para trazer todos os dados
 	MAT.*
 FROM ALUNO AL
 JOIN ENDERECO END
-ON IDALUNO = ID_ALUNO
+ON AL.IDALUNO = END.ID_ALUNO
 JOIN TELEFONE TEL
-ON IDALUNO = ID_ALUNO
+ON AL.IDALUNO = TEL.ID_ALUNO              /*NESSE CASO, para não confundir o banco e não ficar ambiguo o comando, precisei colocar o apelido dado na frente do ON */
 JOIN CURSO C
-ON IDALUNO = ID_ALUNO
+ON AL.IDALUNO = C.ID_ALUNO
 JOIN MATRICULA MAT
-ON IDALUNO = ID_ALUNO;
+ON AL.IDALUNO = MAT.ID_ALUNO;
 where IDALUNO = 1;
 
 
@@ -108,15 +137,15 @@ SELECT  AL.*,
 	MAT.*
 FROM ALUNO AL
 JOIN ENDERECO END
-ON IDALUNO = ID_ALUNO
+ON AL.IDALUNO = END.ID_ALUNO
 JOIN TELEFONE TEL
-ON IDALUNO = ID_ALUNO
+ON AL.IDALUNO = TEL.ID_ALUNO
 JOIN CURSO C
-ON IDALUNO = ID_ALUNO
+ON AL.IDALUNO = C.ID_ALUNO
 JOIN MATRICULA MAT
-ON IDALUNO = ID_ALUNO;
+ON AL.IDALUNO = MAT.ID_ALUNO
 where IDALUNO = 1;
 
 
-SELECT * FROM RELATORIO
+SELECT * FROM RELATORIO    /* Aqui eu fiz um select da view para facilitar as pesquisas no dia-a-dia. */
 WHERE IDALUNO = 1;
