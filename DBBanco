@@ -17,7 +17,7 @@ CREATE TABLE ENDERECO(
 	ID_ALUNO INT UNIQUE
 
 	FOREIGN KEY(ID_ALUNO)                   /* Fazendo a ligação da chave primaria com a chave estrangeira  */
-	REFERENCES CLIENTE(IDALUNO)
+	REFERENCES ALUNO(IDALUNO)
 );
 
 CREATE TABLE TELEFONE(
